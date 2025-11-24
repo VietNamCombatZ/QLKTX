@@ -11,7 +11,7 @@ public class U_R_RecordDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM user_room_records";
+			String sql = "SELECT * FROM user_room_record";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -28,7 +28,7 @@ public class U_R_RecordDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "INSERT INTO `user_room_records`(`room_id`, `user_id`, `month`, `year`, `room`, `electric`, `water`, `wifi`) VALUES ('"+record.getRoom_id()+"','"+record.getUser_id()+"',"+record.getMonth()+","+record.getYear()+","+record.isRoom()+","+record.isElectric()+","+record.isWater()+","+record.isWifi()+")";
+			String sql = "INSERT INTO `user_room_record`(`room_id`, `user_id`, `month`, `year`, `room`, `electric`, `water`, `wifi`) VALUES ('"+record.getRoom_id()+"','"+record.getUser_id()+"',"+record.getMonth()+","+record.getYear()+","+record.isRoom()+","+record.isElectric()+","+record.isWater()+","+record.isWifi()+")";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -41,7 +41,7 @@ public class U_R_RecordDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `user_room_records` SET `room`="+record.isRoom()+",`electric`="+record.isElectric()+",`water`="+record.isWater()+",`wifi`="+record.isWifi()+" WHERE `room_id` = '"+record.getRoom_id()+"' AND `user_id` = '"+record.getUser_id()+"' AND `month` = "+record.getMonth()+" AND `year` = "+record.getYear()+"";
+			String sql = "UPDATE `user_room_record` SET `room`="+record.isRoom()+",`electric`="+record.isElectric()+",`water`="+record.isWater()+",`wifi`="+record.isWifi()+" WHERE `room_id` = '"+record.getRoom_id()+"' AND `user_id` = '"+record.getUser_id()+"' AND `month` = "+record.getMonth()+" AND `year` = "+record.getYear()+"";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

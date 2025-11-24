@@ -11,7 +11,7 @@ public class RoomDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM rooms";
+			String sql = "SELECT * FROM room";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -29,7 +29,7 @@ public class RoomDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "INSERT INTO `rooms`(`room_id`, `type`, `capacity`, `price`) VALUES ('"+room.getRoom_id()+"','"+room.getType()+"','"+room.getCapacity()+"','"+room.getPrice()+"')";
+			String sql = "INSERT INTO `room`(`room_id`, `type`, `capacity`, `price`) VALUES ('"+room.getRoom_id()+"','"+room.getType()+"','"+room.getCapacity()+"','"+room.getPrice()+"')";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -42,7 +42,7 @@ public class RoomDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `rooms` SET `price`='" + room.getPrice() + "' WHERE `room_id` = '" + room.getRoom_id() + "'";
+			String sql = "UPDATE `room` SET `price`='" + room.getPrice() + "' WHERE `room_id` = '" + room.getRoom_id() + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -55,7 +55,7 @@ public class RoomDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "DELETE FROM `rooms` WHERE `room_id` = '" + room_id + "'";
+			String sql = "DELETE FROM `room` WHERE `room_id` = '" + room_id + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

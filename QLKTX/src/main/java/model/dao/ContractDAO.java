@@ -12,7 +12,7 @@ public class ContractDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM contracts";
+			String sql = "SELECT * FROM contract";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -35,7 +35,7 @@ public class ContractDAO {
             String endFormatted = outputFormat.format(contract.getEnd());
             java.sql.Date sqlStartDate = java.sql.Date.valueOf(startFormatted);
             java.sql.Date sqlEndDate = java.sql.Date.valueOf(endFormatted);
-			String sql = "INSERT INTO `contracts`(`contract_id`, `user_id`, `room_id`, `duration`, `start`, `end`, `state`) VALUES ('"+contract.getContract_id()+"','"+contract.getUser_id()+"','"+contract.getRoom_id()+"',"+contract.getDuration()+",'"+sqlStartDate+"','"+sqlEndDate+"','"+contract.getState()+"')";
+			String sql = "INSERT INTO `contract`(`contract_id`, `user_id`, `room_id`, `duration`, `start`, `end`, `state`) VALUES ('"+contract.getContract_id()+"','"+contract.getUser_id()+"','"+contract.getRoom_id()+"',"+contract.getDuration()+",'"+sqlStartDate+"','"+sqlEndDate+"','"+contract.getState()+"')";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -48,7 +48,7 @@ public class ContractDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `contracts` SET `state`='"+contract.getState()+"' WHERE `contract_id`='"+contract.getContract_id()+"'";
+			String sql = "UPDATE `contract` SET `state`='"+contract.getState()+"' WHERE `contract_id`='"+contract.getContract_id()+"'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

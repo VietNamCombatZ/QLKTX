@@ -281,8 +281,8 @@
                     %>
                         <tr>
                             <td><%=userList.get(i).getUser_id()%></td>
-                            <td><%=userList.get(i).getFirstname()%></td>
                             <td><%=userList.get(i).getLastname()%></td>
+                            <td><%=userList.get(i).getFirstname()%></td>
                             <td><%=userList.get(i).isMale() ? "Nam" : "Nữ"%></td>
                             <td><%=userList.get(i).getPhonenumber()%></td>
                             <td><%=userList.get(i).getCccd()%></td>

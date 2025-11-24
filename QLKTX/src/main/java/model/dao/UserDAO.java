@@ -15,7 +15,7 @@ public class UserDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM user";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -25,7 +25,8 @@ public class UserDAO {
 			conn.close();
 		}catch(Exception e)
 		{
-			System.out.print("Error: " + e);
+			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return userList;
 	}
@@ -35,7 +36,7 @@ public class UserDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM user";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -55,7 +56,7 @@ public class UserDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `users` SET `firstname`='" + user.getFirstname() + "',`lastname`='" + user.getLastname() + "',`phonenumber`='" + user.getPhonenumber() + "',`cccd`='" + user.getCccd() + "',`gender`=" + user.isMale() + " WHERE `id` = '" + user.getUser_id() + "'";
+			String sql = "UPDATE `user` SET `firstname`='" + user.getFirstname() + "',`lastname`='" + user.getLastname() + "',`phonenumber`='" + user.getPhonenumber() + "',`cccd`='" + user.getCccd() + "',`gender`=" + user.isMale() + " WHERE `id` = '" + user.getUser_id() + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -68,7 +69,7 @@ public class UserDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "DELETE FROM `users` WHERE `id` = '" + user_id + "'";
+			String sql = "DELETE FROM `user` WHERE `id` = '" + user_id + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

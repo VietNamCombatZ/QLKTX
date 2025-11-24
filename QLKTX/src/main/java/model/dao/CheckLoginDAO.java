@@ -10,7 +10,7 @@ public class CheckLoginDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'";
+			String sql = "SELECT * FROM user WHERE username = '" + username + "' AND password = '" + password + "'";
 			ResultSet rs = sm.executeQuery(sql);
 			if (rs.next()) {
 				if (rs.getString("username") != null)
