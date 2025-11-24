@@ -9,11 +9,9 @@ public class RoomDAO {
 	public ArrayList<Room> getAllRoom() {
 		ArrayList<Room> roomList = new ArrayList<Room>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM room";
+			String sql = "SELECT * FROM rooms";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -29,11 +27,9 @@ public class RoomDAO {
 	
 	public boolean addRoom(Room room) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "INSERT INTO `room`(`room_id`, `type`, `capacity`, `price`) VALUES ('"+room.getRoom_id()+"','"+room.getType()+"','"+room.getCapacity()+"','"+room.getPrice()+"')";
+			String sql = "INSERT INTO `rooms`(`room_id`, `type`, `capacity`, `price`) VALUES ('"+room.getRoom_id()+"','"+room.getType()+"','"+room.getCapacity()+"','"+room.getPrice()+"')";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -44,11 +40,9 @@ public class RoomDAO {
 	
 	public boolean updateRoom(Room room) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `room` SET `price`='" + room.getPrice() + "' WHERE `room_id` = '" + room.getRoom_id() + "'";
+			String sql = "UPDATE `rooms` SET `price`='" + room.getPrice() + "' WHERE `room_id` = '" + room.getRoom_id() + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -59,11 +53,9 @@ public class RoomDAO {
 	
 	public boolean deleteRoom(String room_id) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "DELETE FROM `room` WHERE `room_id` = '" + room_id + "'";
+			String sql = "DELETE FROM `rooms` WHERE `room_id` = '" + room_id + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

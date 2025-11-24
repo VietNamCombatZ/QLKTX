@@ -10,11 +10,9 @@ public class ContractDAO {
 	public ArrayList<Contract> getAllContract() {
 		ArrayList<Contract> contractList = new ArrayList<Contract>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM contract";
+			String sql = "SELECT * FROM contracts";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -30,16 +28,14 @@ public class ContractDAO {
 	
 	public boolean addContract(Contract contract) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
 			SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
             String startFormatted = outputFormat.format(contract.getStart());
             String endFormatted = outputFormat.format(contract.getEnd());
             java.sql.Date sqlStartDate = java.sql.Date.valueOf(startFormatted);
             java.sql.Date sqlEndDate = java.sql.Date.valueOf(endFormatted);
-			String sql = "INSERT INTO `contract`(`contract_id`, `user_id`, `room_id`, `duration`, `start`, `end`, `state`) VALUES ('"+contract.getContract_id()+"','"+contract.getUser_id()+"','"+contract.getRoom_id()+"',"+contract.getDuration()+",'"+sqlStartDate+"','"+sqlEndDate+"','"+contract.getState()+"')";
+			String sql = "INSERT INTO `contracts`(`contract_id`, `user_id`, `room_id`, `duration`, `start`, `end`, `state`) VALUES ('"+contract.getContract_id()+"','"+contract.getUser_id()+"','"+contract.getRoom_id()+"',"+contract.getDuration()+",'"+sqlStartDate+"','"+sqlEndDate+"','"+contract.getState()+"')";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -50,11 +46,9 @@ public class ContractDAO {
 	
 	public boolean updateContract(Contract contract) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `contract` SET `state`='"+contract.getState()+"' WHERE `contract_id`='"+contract.getContract_id()+"'";
+			String sql = "UPDATE `contracts` SET `state`='"+contract.getState()+"' WHERE `contract_id`='"+contract.getContract_id()+"'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {

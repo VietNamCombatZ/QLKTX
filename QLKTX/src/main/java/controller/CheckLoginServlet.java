@@ -17,6 +17,7 @@ public class CheckLoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		System.out.println(username);
 		String password = request.getParameter("password");
+		System.out.println(password);
 		if(checkloginBO.CheckUserExist(username, password)) {
 			if(username.equals("admin"))
 				response.sendRedirect("Admin/index.jsp");

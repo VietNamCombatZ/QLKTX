@@ -1,17 +1,16 @@
 package model.dao;
 
-import java.sql.*;
-import java.util.*;
 import java.lang.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class CheckLoginDAO {
 	public boolean CheckUserExist(String username, String password) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM user WHERE username = '" + username + "' AND password = '" + password + "'";
+			String sql = "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'";
 			ResultSet rs = sm.executeQuery(sql);
 			if (rs.next()) {
 				if (rs.getString("username") != null)

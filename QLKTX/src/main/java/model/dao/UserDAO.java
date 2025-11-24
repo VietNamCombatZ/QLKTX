@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.bean.*;
+import model.bean.User;
 import java.util.*;
 import java.lang.*;
 import java.sql.Connection;
@@ -13,11 +13,9 @@ public class UserDAO {
 	public ArrayList<User> getAllUser() {
 		ArrayList<User> userList = new ArrayList<User>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM user";
+			String sql = "SELECT * FROM users";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -35,11 +33,9 @@ public class UserDAO {
 	public ArrayList<User> getAllUserLG() {
 		ArrayList<User> userList = new ArrayList<User>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "SELECT * FROM user";
+			String sql = "SELECT * FROM users";
 			ResultSet rs = sm.executeQuery(sql);
 			while(rs.next())
 			{
@@ -57,11 +53,9 @@ public class UserDAO {
 	
 	public boolean updateUser(User user) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "UPDATE `user` SET `firstname`='" + user.getFirstname() + "',`lastname`='" + user.getLastname() + "',`phonenumber`='" + user.getPhonenumber() + "',`cccd`='" + user.getCccd() + "',`gender`=" + user.isMale() + " WHERE `id` = '" + user.getUser_id() + "'";
+			String sql = "UPDATE `users` SET `firstname`='" + user.getFirstname() + "',`lastname`='" + user.getLastname() + "',`phonenumber`='" + user.getPhonenumber() + "',`cccd`='" + user.getCccd() + "',`gender`=" + user.isMale() + " WHERE `id` = '" + user.getUser_id() + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -72,11 +66,9 @@ public class UserDAO {
 	
 	public boolean deleteUser(String user_id) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
-			String sql = "DELETE FROM `user` WHERE `id` = '" + user_id + "'";
+			String sql = "DELETE FROM `users` WHERE `id` = '" + user_id + "'";
 			int rowAffected = sm.executeUpdate(sql);
 			return rowAffected > 0;
 		} catch(Exception e) {
@@ -87,9 +79,7 @@ public class UserDAO {
 	
 	public boolean addUser(User user) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/qlktx";
-			Connection conn = DriverManager.getConnection(url, "root", "");
+			Connection conn = DBConnection.getConnection();
 			Statement sm = conn.createStatement();
 			String sql = "INSERT INTO `user`(`id`, `username`, `password`, `firstname`, `lastname`, `phonenumber`, `cccd`, `gender`) VALUES ('"+user.getUser_id()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getFirstname()+"','"+user.getLastname()+"','"+user.getPhonenumber()+"','"+user.getCccd()+"',"+user.isMale()+")";
 			int rowAffected = sm.executeUpdate(sql);
