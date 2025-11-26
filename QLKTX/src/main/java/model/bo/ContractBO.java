@@ -8,13 +8,35 @@ import java.io.*;
 
 public class ContractBO {
 	ContractDAO contractDAO = new ContractDAO();
+	
+	/**
+	 * Check and update expired contracts
+	 * A contract is expired if current date > end date
+	 */
+	private void checkAndUpdateExpiredContracts(ArrayList<Contract> contracts) {
+		Date currentDate = new Date();
+		for (Contract contract : contracts) {
+			// Only update contracts that are currently active or pending
+			if ((contract.getState().equals("Đang thuê") || contract.getState().equals("Chờ phê duyệt")) 
+				&& contract.getEnd() != null 
+				&& currentDate.after(contract.getEnd())) {
+				contract.setState("Hết hạn");
+				contractDAO.updateContract(contract);
+			}
+		}
+	}
+	
 	public ArrayList<Contract> getAllContract() {
-		return contractDAO.getAllContract();
+		ArrayList<Contract> contracts = contractDAO.getAllContract();
+		checkAndUpdateExpiredContracts(contracts);
+		return contracts;
 	}
 	
 	public ArrayList<Contract> getByUserID(String user_id) {
+		ArrayList<Contract> allContracts = contractDAO.getAllContract();
+		checkAndUpdateExpiredContracts(allContracts);
 		ArrayList<Contract> contractList = new ArrayList<Contract>();
-		for (Contract contract : contractDAO.getAllContract()) {
+		for (Contract contract : allContracts) {
 			if(contract.getUser_id().equals(user_id)) {
 				contractList.add(contract);
 			}

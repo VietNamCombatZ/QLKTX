@@ -150,6 +150,21 @@ tbody tr:nth-child(even) {
 	background-color: #f7f7f7;
 }
 
+.status-expired {
+	color: #dc3545;
+	font-weight: bold;
+}
+
+.status-active {
+	color: #28a745;
+	font-weight: bold;
+}
+
+.status-pending {
+	color: #ffc107;
+	font-weight: bold;
+}
+
 tbody tr:hover {
 	background-color: #dfdfdf;
 }
@@ -255,14 +270,26 @@ tbody tr:hover {
 							<td><%=contract.getDuration()%></td>
 							<td><%=contract.getStart()%></td>
 							<td><%=contract.getEnd()%></td>
-							<td><%=contract.getState()%></td>
+							<td class="<%
+								if(contract.getState().equals("Hết hạn")) {
+									out.print("status-expired");
+								} else if(contract.getState().equals("Đang thuê")) {
+									out.print("status-active");
+								} else if(contract.getState().equals("Chờ phê duyệt")) {
+									out.print("status-pending");
+								}
+							%>"><%=contract.getState()%></td>
 							<td>
 								<%
 									if(contract.getState().equals("Chờ phê duyệt")) {
 								%>
 									<button class="accept-btn" style="margin-right: 5px" onclick="Accept('<%=contract.getContract_id()%>')">Phê duyệt</button>
 								<%
-									} else {
+									} else if(contract.getState().equals("Đang thuê")) {
+								%>
+									<button class="extend-btn" style="margin-right: 5px" onclick="Extend('<%=contract.getContract_id()%>', '<%=contract.getUser_id()%>', '<%=contract.getRoom_id()%>')">Gia hạn</button>
+								<%
+									} else if(contract.getState().equals("Hết hạn")) {
 								%>
 									<button class="extend-btn" style="margin-right: 5px" onclick="Extend('<%=contract.getContract_id()%>', '<%=contract.getUser_id()%>', '<%=contract.getRoom_id()%>')">Gia hạn</button>
 								<%
