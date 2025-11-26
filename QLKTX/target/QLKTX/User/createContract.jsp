@@ -142,9 +142,9 @@ input[type="submit"]:hover, input[type="reset"]:hover {
 				</tr>
 				<tr>
 					<td><label for="ho">Họ</label></td>
-					<td><input type="text" name="firstname" value="<%=user.getFirstname()%>" required /></td>
+					<td><input type="text" name="lastname" value="<%=user.getLastname()%>" required /></td>
 					<td><label for="ten">Tên</label></td>
-					<td><input type="text" name="lastname" value="<%=user.getLastname()%>" required></td>
+					<td><input type="text" name="firstname" value="<%=user.getFirstname()%>" required></td>
 				</tr>
 				<tr>
 					<td><label for="sdt">Số điện thoại</label></td>

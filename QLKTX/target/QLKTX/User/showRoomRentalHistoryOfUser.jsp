@@ -173,7 +173,7 @@ img {
 			<tr>
 				<td><label for="hoten">Họ tên</label></td>
 				<td><input type="text" id="hoten" name="hoten"
-					value="<%=user.getFirstname()%> <%=user.getLastname()%>" disabled></td>
+					value="<%=user.getLastname()%> <%=user.getFirstname()%>" disabled></td>
 			</tr>
 			<tr>
 				<td><label for="sdt">SĐT</label></td>

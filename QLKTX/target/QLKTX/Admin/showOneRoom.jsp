@@ -298,8 +298,8 @@ img {
 				%>
 				<tr>
 					<td><%=recordDtoList.get(i).getUser_id()%></td>
-					<td><%=recordDtoList.get(i).getFirstname()%></td>
 					<td><%=recordDtoList.get(i).getLastname()%></td>
+					<td><%=recordDtoList.get(i).getFirstname()%></td>
 					<td><%=recordDtoList.get(i).getPhonenumber()%></td>
 					<td><%=recordDtoList.get(i).getCccd()%></td>
 					<td>

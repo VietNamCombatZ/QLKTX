@@ -155,7 +155,7 @@ select {
 				</tr>
 				<tr>
 					<td><label for="ho">Họ</label></td>
-					<td><input type="text" name="firstname" id="ho" value="" /></td>
+					<td><input type="text" name="lastname" id="ho" value="" /></td>
 					
 					<td><label for="gioitinh">Giới tính</label></td>
 					<td><select name="gender">
@@ -165,7 +165,7 @@ select {
 				</tr>
 				<tr>
 					<td><label for="ten">Tên</label></td>
-					<td colspan="3"><input type="text" name="lastname" id="ten" value="" /></td>
+					<td colspan="3"><input type="text" name="firstname" id="ten" value="" /></td>
 				</tr>
 				<tr>
 					<td><label for="sdt">Số điện thoại</label></td>

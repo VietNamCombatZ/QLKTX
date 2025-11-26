@@ -29,9 +29,11 @@ public class ContractController extends HttpServlet {
 			for(Contract contract : contractBO.getAllContract()) {
 				existingCodes.add(contract.getContract_id());
 			}
+			String newCode = helper.GenerateNewCode.generateNewCode(existingCodes);
 			request.setAttribute("user", user);
 			request.setAttribute("roomid", room_id);
 			request.setAttribute("code", existingCodes);
+			request.setAttribute("newCode", newCode);
 			request.getRequestDispatcher("Admin/contractExtension.jsp").forward(request, response);
 			return;
 		}
@@ -43,9 +45,11 @@ public class ContractController extends HttpServlet {
 			for(Contract contract : contractBO.getAllContract()) {
 				existingCodes.add(contract.getContract_id());
 			}
+			String newCode = helper.GenerateNewCode.generateNewCode(existingCodes);
 			request.setAttribute("user", user);
 			request.setAttribute("roomid", room_id);
 			request.setAttribute("code", existingCodes);
+			request.setAttribute("newCode", newCode);
 			request.getRequestDispatcher("Admin/_contractExtension.jsp").forward(request, response);
 			return;
 		}
@@ -58,9 +62,11 @@ public class ContractController extends HttpServlet {
 			for(Contract contract : contractBO.getAllContract()) {
 				existingCodes.add(contract.getContract_id());
 			}
+			String newCode = helper.GenerateNewCode.generateNewCode(existingCodes);
 			request.setAttribute("user", user);
 			request.setAttribute("roomid", room_id);
 			request.setAttribute("code", existingCodes);
+			request.setAttribute("newCode", newCode);
 			request.getRequestDispatcher("User/contractExtensionOfUser.jsp").forward(request, response);
 			return;
 		}

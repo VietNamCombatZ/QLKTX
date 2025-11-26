@@ -157,9 +157,9 @@
         <form action="<%=request.getContextPath()%>/ContractController?action=updatecontract&contractid=<%=contract.getContract_id()%>" method="post">
             <table>
                 <tr>
-                    <td><label for="firstname">Họ</label></td>
-					<td><input type="text" name="firstname" id="hoten"
-						value="<%=user.getFirstname()%>" required readonly /></td>
+                    <td><label for="lastname">Họ</label></td>
+					<td><input type="text" name="lastname" id="hoten"
+						value="<%=user.getLastname()%>" required readonly /></td>
 					<td><label for="gioitinh">Giới tính</label></td>
 					<td>
                         <select name="" id="loaiphong" required disabled>
@@ -183,9 +183,9 @@
                     </td>
                 </tr>
                 <tr>
-                	<td><label for="lastname">Tên</label></td>
-					<td colspan="3"><input type="text" name="lastname" id="hoten"
-						value="<%=user.getLastname()%>" required readonly /></td>
+                	<td><label for="firstname">Tên</label></td>
+					<td colspan="3"><input type="text" name="firstname" id="hoten"
+						value="<%=user.getFirstname()%>" required readonly /></td>
                 </tr>
                 <tr>
                     <td><label for="sdt">Số điện thoại</label></td>
@@ -222,9 +222,9 @@
         <form action="<%=request.getContextPath()%>/ContractController?action=_extend&userid=<%=user.getUser_id()%>&roomid=<%=contract.getRoom_id()%>" method="post">
             <table>
                 <tr>
-                    <td><label for="firstname">Họ</label></td>
-					<td><input type="text" name="firstname" id="hoten"
-						value="<%=user.getFirstname()%>" required readonly /></td>
+                    <td><label for="lastname">Họ</label></td>
+                    <td><input type="text" name="lastname" id="ho"
+                        value="<%=user.getLastname()%>" required readonly /></td>
 					<td><label for="gioitinh">Giới tính</label></td>
 					<td>
                         <select name="" id="loaiphong" required disabled>
@@ -248,9 +248,9 @@
                     </td>
                 </tr>
                 <tr>
-                	<td><label for="lastname">Tên</label></td>
-					<td colspan="3"><input type="text" name="lastname" id="hoten"
-						value="<%=user.getLastname()%>" required readonly /></td>
+                    <td><label for="firstname">Tên</label></td>
+                    <td colspan="3"><input type="text" name="firstname" id="ten"
+                        value="<%=user.getFirstname()%>" required readonly /></td>
                 </tr>
                 <tr>
                     <td><label for="sdt">Số điện thoại</label></td>

@@ -145,12 +145,12 @@ input[type="text"]:focus, select:focus {
 				</tr>
 				<tr>
 					<td><label for="ho">Họ</label></td>
-					<td><input type="text" name="firstname" id="ho" value="<%=user.getFirstname()%>"
+					<td><input type="text" name="lastname" id="ho" value="<%=user.getLastname()%>"
 						required /></td>
 				</tr>
 				<tr>
 					<td><label for="ten">Tên</label></td>
-					<td><input type="text" name="lastname" id="ten" value="<%=user.getLastname()%>" required /></td>
+					<td><input type="text" name="firstname" id="ten" value="<%=user.getFirstname()%>" required /></td>
 				</tr>
 				<tr>
 					<td><label for="sdt">Số điện thoại</label></td>

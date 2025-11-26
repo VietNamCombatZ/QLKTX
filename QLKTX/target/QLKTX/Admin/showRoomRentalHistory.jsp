@@ -126,7 +126,7 @@ tbody tr:hover {
 	font-weight: bold;
 }
 
-.extend-btn {
+.extend-btn, .accept-btn {
 	border: none;
 	padding: 8px 12px;
 	color: #fff;
@@ -134,6 +134,10 @@ tbody tr:hover {
 	border-radius: 4px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+}
+
+.accept-btn {
+	background-color: rgb(243, 158, 1);
 }
 
 .extend-btn {
@@ -195,7 +199,7 @@ img {
 			<tr>
 				<td><label for="hoten">Họ tên</label></td>
 				<td><input type="text" id="hoten" name="hoten"
-					value="<%=user.getFirstname()%> <%=user.getLastname()%>" disabled></td>
+					value="<%=user.getLastname()%> <%=user.getFirstname()%>" disabled></td>
 			</tr>
 			<tr>
 				<td><label for="sdt">SĐT</label></td>
@@ -247,7 +251,9 @@ img {
 						<%
 							if(contract.getState().equals("Chờ phê duyệt")) {
 						%>
-						<td></td>
+						<td>
+							<button class="accept-btn" style="margin-right: 5px" onclick="Accept('<%=contract.getContract_id()%>')">Phê duyệt</button>
+						</td>
 						<%
 							} else {
 						%>
@@ -285,6 +291,10 @@ img {
 document.addEventListener('DOMContentLoaded', addExtendButtonHandlers); */
 function extend(userid, roomid) {
 	window.location.href = "<%=request.getContextPath()%>/ContractController?action=extend&userid=" + userid + "&roomid=" + roomid;
+}
+
+function Accept(contractid) {
+	window.location.href = "<%=request.getContextPath()%>/ContractController?action=updatecontract&contractid=" + encodeURIComponent(contractid);
 }
 </script>
 </html>

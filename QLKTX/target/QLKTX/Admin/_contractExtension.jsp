@@ -150,17 +150,20 @@ select {
 		<form action="<%=request.getContextPath()%>/ContractController?action=_addcontract&userid=<%=user.getUser_id()%>" method="post">
 			<table>
 				<tr>
-					<td><label for="contractid">Mã hợp đồng</label></td>
+					<!-- <td><label for="contractid">Mã hợp đồng</label></td>
 					<td colspan="3"><input type="text" name="contractid" id="hoten"
-						value="" required /></td>
+						value="" required /></td> -->
+						<td><label for="contractid">Mã hợp đồng</label></td>
+					<td><input type="text" name="contractid" id="contractid" autocomplete="off"
+						value="<%=request.getAttribute("newCode") != null ? (String)request.getAttribute("newCode") : ""%>" required readonly /></td>
 				</tr>
 				<tr>
-					<td><label for="firstname">Họ</label></td>
-					<td><input type="text" name="firstname" id="hoten"
-						value="<%=user.getFirstname()%>" required readonly /></td>
-					<td><label for="lastname">Tên</label></td>
-					<td><input type="text" name="lastname" id="hoten"
+					<td><label for="lastname">Họ</label></td>
+					<td><input type="text" name="lastname" id="lastname" autocomplete="family-name"
 						value="<%=user.getLastname()%>" required readonly /></td>
+					<td><label for="firstname">Tên</label></td>
+					<td><input type="text" name="firstname" id="firstname" autocomplete="given-name"
+						value="<%=user.getFirstname()%>" required readonly /></td>
 				</tr>
 				<tr>
 					<td><label for="sdt">Số điện thoại</label></td>

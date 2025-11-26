@@ -264,8 +264,8 @@ tbody tr:hover {
 					%>
 						<tr>
 							<td><%=contract.getContract_id()%></td>
-							<td><%=contract.getFirstname()%></td>
 							<td><%=contract.getLastname()%></td>
+							<td><%=contract.getFirstname()%></td>
 							<td><%=contract.getRoom_id()%></td>
 							<td><%=contract.getDuration()%></td>
 							<td><%=contract.getStart()%></td>
