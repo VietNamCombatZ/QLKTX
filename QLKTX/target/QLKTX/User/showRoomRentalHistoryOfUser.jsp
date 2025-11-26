@@ -90,6 +90,21 @@ tbody tr:hover {
 	background-color: #dfdfdf;
 }
 
+.status-expired {
+	color: #dc3545;
+	font-weight: bold;
+}
+
+.status-active {
+	color: #28a745;
+	font-weight: bold;
+}
+
+.status-pending {
+	color: #ffc107;
+	font-weight: bold;
+}
+
 .extend-btn {
 	border: none;
 	padding: 8px 12px;
@@ -198,7 +213,15 @@ img {
 						<td><%=contract.getEnd()%></td>
 						<td><%=contract.getDuration()%> tháng</td>
 						<td><%=contract.getRoom_id()%></td>
-						<td><%=contract.getState()%></td>
+						<td class="<%
+							if(contract.getState().equals("Hết hạn")) {
+								out.print("status-expired");
+							} else if(contract.getState().equals("Đang thuê")) {
+								out.print("status-active");
+							} else if(contract.getState().equals("Chờ phê duyệt")) {
+								out.print("status-pending");
+							}
+						%>"><%=contract.getState()%></td>
 						<%
 							if(contract.getState().equals("Chờ phê duyệt")) {
 						%>

@@ -38,8 +38,8 @@ CREATE TABLE `user` (
 -- ============================================================
 CREATE TABLE `room` (
   `room_id` VARCHAR(50) NOT NULL PRIMARY KEY COMMENT 'Room identifier',
-  `type` VARCHAR(50) COMMENT 'Room type (Single, Double, etc.)',
-  `capacity` INT COMMENT 'Maximum number of occupants',
+  `type` VARCHAR(50) COMMENT 'Room type (Nam or nữ)',
+  `capacity` INT COMMENT 'Maximum number of occupants(4,6,8)',
   `price` VARCHAR(50) COMMENT 'Room rental price (stored as string in current implementation)',
   INDEX idx_type (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Dormitory room information';
@@ -102,7 +102,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `firstname`, `lastname`, `phon
 INSERT INTO `user` (`id`, `username`, `password`, `firstname`, `lastname`, `phonenumber`, `cccd`, `gender`) VALUES
 ('1022301530', 'nguyenvana', 'password123', 'Văn A', 'Nguyễn', '123456123456', '012345678901', 1),
 ('1022301531', 'tranthib', 'pass456', 'Thị B', 'Trần', '123456123457', '098765432109', 0),
-('1022301532', 'levanc', 'mypass789', 'Văn C', 'Lê', '123456123458', '091234567890', 1);
+('1022301532', 'levanc', 'mypass789', 'Văn C', 'Lê', '123456123458', '091234567890', 1),
 ('1022301533', 'nguyendung', '12341234', 'Dũng', 'Nguyễn', '123456123459', '091263667890', 1);
 
 -- Sample rooms
@@ -111,17 +111,17 @@ INSERT INTO `room` (`room_id`, `type`, `capacity`, `price`) VALUES
 ('A102', 'Nam', 8, '1500000'),
 ('A201', 'Nam', 6, '2500000'),
 ('A202', 'Nam', 6, '2500000'),
-('B101', 'Nữ', 4, '4000000');
-('B101', 'Nữ', 4, '4000000');
-('B201', 'Nữ', 6, '2500000');
+('B101', 'Nữ', 4, '4000000'),
+('B102', 'Nữ', 4, '4000000'),
+('B201', 'Nữ', 6, '2500000'),
 ('B202', 'Nữ', 6, '2500000');
 
 -- Sample contracts
 INSERT INTO `contract` (`contract_id`, `user_id`, `room_id`, `duration`, `start`, `end`, `state`) VALUES
-('HD001', '1022301530', 'A101', 12, '2025-06-01', '2026-06-31', 'Đang thuê'),
-('HD002', '1022301531', 'B201', 6, '2025-11-01', '2026-06-30', 'Đang thuê'),
-('HD003', '1022301532', 'A102', 3, '2025-11-01', '2026-02-28', 'Chờ phê duyệt');
-('HD004', '1022301533', 'A102', 4, '2025-06-01', '2025-10-31', 'Hết hạn');
+('HD001', '1022301530', 'A101', 12, '2025-06-01', '2026-05-31', 'Đang thuê'),
+('HD002', '1022301531', 'B201', 6, '2025-11-01', '2026-04-30', 'Đang thuê'),
+('HD003', '1022301532', 'A102', 3, '2025-11-01', '2026-01-31', 'Chờ phê duyệt'),
+('HD004', '1022301533', 'A102', 5, '2025-06-01', '2025-10-31', 'Hết hạn');
 
 
 -- Sample payment records
@@ -138,7 +138,7 @@ INSERT INTO `user_room_record` (`room_id`, `user_id`, `month`, `year`, `room`, `
 ('A102', '1022301533', 9, 2025, 1, 0, 1, 1),
 ('A102', '1022301533', 10, 2025, 1, 0, 1, 1),
 
-('B201', '1022301531', 11, 2025, 1, 1, 1, 0),
+('B201', '1022301531', 11, 2025, 1, 1, 1, 0);
 -- ('B201', '1022301531', 7, 2025, 1, 1, 0, 1),
 -- ('A102', '1022301532', 9, 2025, 0, 0, 0, 0);
 
